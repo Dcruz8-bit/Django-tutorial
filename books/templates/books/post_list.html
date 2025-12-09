@@ -1,23 +1,14 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>David's Books</title>
-    </head>
-    <body>
-       <header>
-    <h1><a href="/">David's Books</a></h1>
-</header>
+{% extends 'books/base.html' %}
 
-{% for book in books %}
-    <article>
-        <time>Published: {{ book.published_date }}</time>
-        <h2><a href="">{{ book.title }}</a></h2>
-        <p><strong>Author:</strong> {{ book.author.username }}</p>
-        <p>{{ book.text|linebreaksbr }}</p>
-    </article>
-{% empty %}
-    <p>No books available yet.</p>
-{% endfor %}
-
-    </body>
-</html>
+{% block content %}
+    {% for book in books %}
+        <article class="post">
+            <time class="date">Published: {{ book.published_date }}</time>
+            <h2><a href="">{{ book.title }}</a></h2>
+            <p><strong>Author:</strong> {{ book.author.username }}</p>
+            <p>{{ book.text|linebreaksbr }}</p>
+        </article>
+    {% empty %}
+        <p>No books available yet.</p>
+    {% endfor %}
+{% endblock %}
