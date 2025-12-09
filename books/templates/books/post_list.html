@@ -1,23 +1,23 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
-        <title>Django Girls blog</title>
+        <title>David's Books</title>
     </head>
     <body>
-        <header>
-            <h1><a href="/">David's Books</a></h1>
-        </header>
+       <header>
+    <h1><a href="/">David's Books</a></h1>
+</header>
 
-        <article>
-            <time>published: 14.06.2014, 12:14</time>
-            <h2><a href="">My first post</a></h2>
-            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-        </article>
+{% for book in books %}
+    <article>
+        <time>Published: {{ book.published_date }}</time>
+        <h2><a href="">{{ book.title }}</a></h2>
+        <p><strong>Author:</strong> {{ book.author.username }}</p>
+        <p>{{ book.text|linebreaksbr }}</p>
+    </article>
+{% empty %}
+    <p>No books available yet.</p>
+{% endfor %}
 
-        <article>
-            <time>published: 14.06.2014, 12:14</time>
-            <h2><a href="">My second post</a></h2>
-            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut f.</p>
-        </article>
     </body>
 </html>
